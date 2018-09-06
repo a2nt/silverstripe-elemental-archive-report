@@ -1,0 +1,3 @@
+en:
+  Derralf\Elemental\ArchiveReport\ElementsInArchiveReport:
+    ReportDescription: 'Simple experimantal extension to list (accidentally) archived Elements and to unarchive them.<br>Also offers the option to "unlive" elements, see this Bug <a target=":blank" href="https://github.com/dnadesign/silverstripe-elemental/issues/212">Deleting element via gridfield delete action doesn''t archive the element #212</a>'
