@@ -42,22 +42,29 @@ class GridFieldUnarchiveElementAction implements GridField_ColumnProvider, GridF
     {
         if(!$record->canEdit()) return;
 
+        $showField = false;
+
         if($record->isArchived()){
+            $showField = true;
             $label = _t(__CLASS__ . '.Unarchive', 'Unarchive');
-        } else {
+        }
+        if($record->isOnLiveOnly()) {
+            $showField = true;
             $label = _t(__CLASS__ . '.MakeDraft', 'Unlive');
         }
 
-        $field = GridField_FormAction::create(
-            $gridField,
-            'UnarchiveElementAction'.$record->ID,
-            $label,
-            "dounarchiveelementaction",
-            ['RecordID' => $record->ID]
-        );
+        if($showField){
+            $field = GridField_FormAction::create(
+                $gridField,
+                'UnarchiveElementAction'.$record->ID,
+                $label,
+                "dounarchiveelementaction",
+                ['RecordID' => $record->ID]
+            );
 
 
-        return $field->Field();
+            return $field->Field();
+        }
     }
 
 
